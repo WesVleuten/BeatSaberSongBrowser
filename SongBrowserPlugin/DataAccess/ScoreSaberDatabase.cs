@@ -48,6 +48,7 @@ namespace SongBrowserPlugin.DataAccess
     public class ScoreSaberDataFile
     {
         public Dictionary<String, ScoreSaberData> SongVersionToScoreSaberData;
+        public string DataString;
 
         public ScoreSaberDataFile(byte[] data)
         {
@@ -59,6 +60,8 @@ namespace SongBrowserPlugin.DataAccess
             System.Globalization.NumberStyles style = System.Globalization.NumberStyles.AllowDecimalPoint;
 
             string result = System.Text.Encoding.UTF8.GetString(data);
+
+            DataString = result;
 
             JSONNode rootNode = JSON.Parse(result);
             foreach (KeyValuePair<string, JSONNode> kvp in rootNode)
